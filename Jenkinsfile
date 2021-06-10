@@ -8,6 +8,15 @@ node{
     def mvnHome = tool name: 'maven-3', type: 'maven'
     sh "${mvnHome}/bin/mvn package"
   }
+  
+  stage('sonar-Analysis')
+  {
+  ef mvnHome = tool name: 'maven-3', type: 'maven'
+    withSonarQubeEnv('sonar-7')
+    {
+    sh "${mvnHome}/bin/mvn sonar:sonar"
+    }
+  }
 
   stage('Slack-notification')
   {
