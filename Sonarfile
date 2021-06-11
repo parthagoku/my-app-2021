@@ -28,7 +28,7 @@ node{
               channel: ' #jenkins-pipeline-project2', color: 'danger', 
               message: 'Sonar Qube Analysis failed', tokenCredentialId: 'slack-demo', 
               username: 'DevopsAspirant'
-              error "Pipeline aborted due to quality gate failure: ${qg.status}"
+              error 'Pipeline aborted due to quality gate failure: ${qg.status}'
               }
           }
       }        
