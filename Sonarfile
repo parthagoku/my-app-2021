@@ -17,10 +17,13 @@ node{
     sh "${mvnHome}/bin/mvn sonar:sonar"
     }
   }
-   stage('Quality Gate Status Check'){
-          timeout(time: 1, unit: 'HOURS') {
+   stage('Quality Gate Status Check')
+   {
+              timeout(time: 1, unit: 'HOURS') 
+              {
               def qg = waitForQualityGate()
-              if (qg.status != 'OK') {
+              if (qg.status != 'OK') 
+              {
               slackSend baseUrl: 'https://hooks.slack.com/services/', 
               channel: ' #jenkins-pipeline-project2', color: 'danger', 
               message: 'Sonar Qube Analysis failed', tokenCredentialId: 'slack-demo', 
